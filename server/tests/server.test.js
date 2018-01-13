@@ -187,8 +187,8 @@ describe('GET /users/me', () => {
 
 describe("POST /users", () => {
   it("should create a user", (done) => {
-    const email = 'example1@dggd.com';
-    const password = '123mns';
+    const email = 'exampgle1@dggd.com';
+    const password = '123mhhns';
 
     request(app)
       .post('/users')
