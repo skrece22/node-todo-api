@@ -123,7 +123,7 @@ app.post('/users/login', login, (req, res) => {
     req.user
       .generateAuthToken()
       .then(token => {
-        res.header("x-auth", token).send(user);
+        res.header("x-auth", token).send(req.user);
       })
       .catch(e => {
         res.status(400).send(e);
