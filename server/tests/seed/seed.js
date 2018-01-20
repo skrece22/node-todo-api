@@ -6,27 +6,34 @@ const { User } = require("./../../models/user");
 
 const userOneId = new ObjectID();
 const userTwoId = new ObjectID();
-const users = [{
+const users = [
+  {
     _id: userOneId,
-    email: 'santhosh@node.com',
-    password: 'passOne',
-    tokens: [{
-        access: 'auth',
+    email: "santhosh@node.com",
+    password: "passOne",
+    tokens: [
+      {
+        access: "auth",
         token: jwt
-                .sign({ _id: userOneId, access: 'auth' }, "abc123")
-                .toString()
-    }]
-}, {
-     _id: userTwoId,
-    email: 'email2@node.com',
-    password: 'passTwo',
-    tokens: [{
-        access: 'auth',
+          .sign({ _id: userOneId, access: "auth" }, process.env.JWT_SECRET)
+          .toString()
+      }
+    ]
+  },
+  {
+    _id: userTwoId,
+    email: "email2@node.com",
+    password: "passTwo",
+    tokens: [
+      {
+        access: "auth",
         token: jwt
-                .sign({ _id: userTwoId, access: 'auth' }, "abc123")
-                .toString()
-    }]
-}];
+          .sign({ _id: userTwoId, access: "auth" }, process.env.JWT_SECRET)
+          .toString()
+      }
+    ]
+  }
+];
 
 const todos = [
   {
