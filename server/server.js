@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { ObjectID } = require("mongodb");
 const _ = require('lodash');
+const cors = require('cors');
 
 const { mongoose } = require("./db/mongoose");
 const { Todo } = require("./models/todo");
@@ -15,6 +16,10 @@ const app = express();
 const port = process.env.PORT;
 
 app.use(bodyParser.json());
+
+app.use(cors({
+  exposedHeaders:"x-auth"
+}));
 
 app.post("/todos", authenticate, (req, res) => {
   var todo = new Todo({
@@ -154,4 +159,4 @@ app.listen(port, () => {
   console.log(`Started app on port ${port}.`);
 });
  
-module.exports = { app }; 
+module.exports = { app };
